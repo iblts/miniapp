@@ -51,7 +51,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 	const [isSwipeProcessing, setIsSwipeProcessing] = useState(false) // флаг для обработки свайпа
 	const [isSwipeAnimating, setIsSwipeAnimating] = useState(false) // флаг для определения анимации реакции на свайп на мобильных устройствах
 
-	const SWIPE_THRESHOLD = 30 //! пороговое значение для свайпа (мышь и тач)
+	const SWIPE_THRESHOLD = 10 //! пороговое значение для свайпа (мышь и тач)
 
 	const currentSection = useCurrentSection(state => state.currentSection)
 	const isChangeSection = useCurrentSection(state => state.isChangeSection)
@@ -130,7 +130,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 	//* СВАЙП *//
 	//# функция для обработки свайпа (мышь и тач)
 	const handleSwipeAction = (direction: SwipeDirectionType) => {
-		if (isSwipeProcessing || width < 1024) return
+		if (isSwipeProcessing) return
 		setIsSwipeProcessing(true)
 
 		setSwipeDirection(direction)
@@ -167,8 +167,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 
 	//# Общий обработчик окончания взаимодействия (мышь и тач)
 	const handleInteractionEnd = (event: React.MouseEvent | React.TouchEvent) => {
-		if (startX === null || isSwipeProcessing || !isDragging || width < 1024)
-			return
+		if (startX === null || isSwipeProcessing || !isDragging) return
 
 		const endX =
 			'changedTouches' in event
@@ -200,6 +199,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 		// Ограничиваем движение карточки
 		const maxDrag = 60
 		const boundedDeltaX = Math.max(Math.min(deltaX, maxDrag), -maxDrag)
+		console.log('Перетаскивание карточки:', boundedDeltaX)
 
 		setDragPosition({
 			x: boundedDeltaX,
