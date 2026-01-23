@@ -7,8 +7,8 @@ import styles from './CardsContent.module.scss'
 
 import { useWindowSize } from '@/hooks/useWindowSize'
 import { useCardStore } from '@/store/useCardStore'
-import { useCounterUserChooseStore } from '@/store/useCounterUserChooseStore'
 import { useCurrentSection } from '@/store/useCurrentSection'
+import { useSelectedCitiesStore } from '@/store/useSelectedCitiesStore'
 import type {
 	CardViewType,
 	SwipeDirectionType,
@@ -57,9 +57,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 	const isChangeSection = useCurrentSection(state => state.isChangeSection)
 
 	//# счетчик "стоплиста"
-	const setStopListCounter = useCounterUserChooseStore(
-		state => state.setStopListCounter,
-	) // функция для увеличения счетчика "стоплиста"
+	const selectCity = useSelectedCitiesStore(state => state.selectCity) // функция для увеличения счетчика "стоплиста"
 
 	//* ОЧИСТКА ТАЙМЕРА *//
 	//# Функция для очистки таймера
@@ -100,7 +98,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 	//# функция для переключения информации о карточке в рамках одной карточки
 	const handleShowCardInfo = (
 		targetView: CardViewType,
-		direction: SwipeDirectionType,
+		direction: SwipeDirectionType
 	) => {
 		clearTimeoutRef() // очистка таймера
 
@@ -112,9 +110,9 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 		setSwipeDirection(direction)
 
 		// если нажата кнопка "стоп" и карточка не в режиме "стоп", то увеличиваем счетчик для подсчета финального результата
-		if (targetView === 'stopList' && cardView !== 'stopList') {
-			setStopListCounter()
-		}
+		// if (targetView === 'stopList' && cardView !== 'stopList') {
+		// 	setStopListCounter()
+		// }
 
 		if (cardView === targetView) {
 			timeoutRef.current = setTimeout(() => {
@@ -134,7 +132,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 		setIsSwipeProcessing(true)
 
 		setSwipeDirection(direction)
-
+		if (direction === 'right') selectCity(currentCardIndex + 1)
 		// const targetView = direction === 'left' ? 'stopList' : 'wishList'
 
 		// if (cardView === 'default') {
@@ -154,7 +152,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 
 	//# Общий обработчик начала взаимодействия (мышь и тач)
 	const handleInteractionStart = (
-		event: React.MouseEvent | React.TouchEvent,
+		event: React.MouseEvent | React.TouchEvent
 	) => {
 		if (isSwipeProcessing) return
 
@@ -188,7 +186,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 
 	//# функция для обработки перетаскивания карточки (мышь и тач)
 	const handleInteractionMove = (
-		event: React.MouseEvent | React.TouchEvent,
+		event: React.MouseEvent | React.TouchEvent
 	) => {
 		if (!isDragging || !startX) return
 
@@ -241,12 +239,12 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 			if (event.key === 'ArrowLeft') {
 				handleShowCardInfo(
 					cardView === 'default' ? 'stopList' : cardView,
-					'left',
+					'left'
 				)
 			} else if (event.key === 'ArrowRight') {
 				handleShowCardInfo(
 					cardView === 'default' ? 'wishList' : cardView,
-					'right',
+					'right'
 				)
 			}
 
@@ -320,9 +318,11 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 							style={{
 								...(isCurrentCard && isDragging
 									? {
-											transform: `translate(${dragPosition.x}px, ${dragPosition.y}px) rotate(${dragPosition.x * 0.05}deg)`,
+											transform: `translate(${dragPosition.x}px, ${
+												dragPosition.y
+											}px) rotate(${dragPosition.x * 0.05}deg)`,
 											transition: 'none',
-										}
+									  }
 									: {}),
 								zIndex: 10 + cardsData.length - index,
 							}}

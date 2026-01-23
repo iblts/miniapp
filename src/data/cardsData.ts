@@ -19,7 +19,7 @@ export interface cardsDataInterface {
 export const cardsData: cardsDataInterface[] = [
 	{
 		id: 1,
-		title: 'Меховые накидки для кресел',
+		title: 'Нижний Новгород',
 		image: CardImage,
 		description:
 			'Вроде такие белые и\u00a0пушистые, но\u00A0всегда готовы самозабвенно защищать салон от\u00A0крошек, капучино и\u00A0собачьей шерсти.',
@@ -36,7 +36,7 @@ export const cardsData: cardsDataInterface[] = [
 	},
 	{
 		id: 2,
-		title: 'Умная колонка',
+		title: 'Дубай',
 		image: CardImage,
 		description: 'Включает песню для принятия важных решений.',
 		stopList: {
