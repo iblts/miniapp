@@ -1,0 +1,15 @@
+@use '@/styles/_variables.scss' as *;
+@use '@/styles/fonts.scss' as *;
+
+body {
+	overflow: hidden;
+	font-family: 'Spoof', sans-serif;
+	background: $secondary;
+	color: $primary-text;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}

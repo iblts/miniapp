@@ -9,7 +9,7 @@ interface CurrentSectionInterface {
 }
 
 export const useCurrentSection = create<CurrentSectionInterface>(set => ({
-	currentSection: 'select',
+	currentSection: 'main',
 	isChangeSection: false,
 	setCurrentSection: section => set({ currentSection: section }),
 	setIsChangeSection: (value: boolean) => set({ isChangeSection: value }),
