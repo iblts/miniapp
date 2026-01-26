@@ -1,5 +1,5 @@
 export const IconLogo = ({
-	fill = '#fff',
+	fill = '#ACEF81',
 	size = 125,
 }: {
 	fill?: string
