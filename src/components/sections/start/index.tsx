@@ -1,6 +1,6 @@
+import ShapeImage from '@/assets/img/green-shape.png'
 import { Button } from '@/components/ui/button'
 import { IconLogo } from '@/components/ui/icons/Logo'
-import { IconQuestion } from '@/components/ui/icons/Question'
 import { useCurrentSection } from '@/store/useCurrentSection'
 import styles from './start-section.module.scss'
 
@@ -13,22 +13,18 @@ export const StartSection = () => {
 			<h1 className={styles.title}>{'Не выбирай,\nпока не сможешь выбрать'}</h1>
 			<article className={styles.info}>
 				<p className={styles.text}>
-					Когда игра начнется, свайпай вправо или влево, чтобы выбрать свой
-					любимый город — в конце тебя будет ждать промокод
+					{
+						'Реально ли прочувствовать город за\u00a05\u00a0секунд? С\u00a0нашими карточками да! Лови искру и\u00a0найди свой город для\u00a0поездки мечты.'
+					}
 				</p>
-				<div className={styles.actions}>
-					<Button
-						className={styles.startButton}
-						onClick={() => setCurrentSection('cards')}
-					>
-						Начать
-					</Button>
-					<Button variant='circle' className={styles.helpButton}>
-						<IconQuestion />
-					</Button>
-				</div>
+				<Button
+					className={styles.startButton}
+					onClick={() => setCurrentSection('cards')}
+				>
+					Начать
+				</Button>
 			</article>
-			<div className={styles.floor} />
+			<img src={ShapeImage} width={375} height={264} className={styles.floor} />
 		</section>
 	)
 }

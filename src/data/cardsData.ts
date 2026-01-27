@@ -1,4 +1,4 @@
-import CardImage from '@/assets/img/card.jpg'
+import CardImage from '@/assets/img/card.png'
 
 export interface cardsDataInterface {
 	id: number

@@ -1,10 +1,11 @@
 import { FinalSection } from '@/components/sections/final'
 import { GameInfo } from '@/components/shared/game-info'
 // import { useLaunchParams, useRawInitData } from '@tma.js/sdk-react'
+import ShapeImage from '@/assets/img/blue-shape.png'
+import { Cards } from '@/components/sections/cards/cards'
 import { SelectCitySection } from '@/components/sections/select-city'
 import { StartSection } from '@/components/sections/start'
 import { useCurrentSection } from '../../../store/useCurrentSection'
-import { CardsContent } from '../../sections/CardsContent/CardsContent'
 import styles from './home-page.module.scss'
 
 export const HomePage = () => {
@@ -27,14 +28,13 @@ export const HomePage = () => {
 
 	return (
 		<main className={styles.main}>
-			<CardsContent
+			<Cards
 				showNextSection={() => setCurrentSection('select')}
 				isAnimationStarted
 				isFinalSection={false}
 			/>
-			<div className={styles.floor} />
+			<img src={ShapeImage} width={375} height={264} className={styles.floor} />
 			<GameInfo />
-			{/* <BackButton /> */}
 		</main>
 	)
 }

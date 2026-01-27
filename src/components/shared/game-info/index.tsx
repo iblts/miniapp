@@ -9,16 +9,17 @@ export const GameInfo = () => {
 
 	return (
 		<article className={styles.gameInfo}>
-			<section className={styles.upper}>
+			<section className={styles.left}>
 				<div className={styles.text}>
 					<p className={styles.count}>
-						{currentCard + 1} / {cardsCount}
+						<span className={styles.current}>{currentCard + 1}</span>
+						<span>/</span>
+						<span>{cardsCount}</span>
 					</p>
-					<p className={styles.subtitle}>городов</p>
 				</div>
-				<Hint />
+				<ProgressBar current={currentCard} total={cardsCount} />
 			</section>
-			<ProgressBar current={currentCard} total={cardsCount} />
+			<Hint className={styles.hint} size={40} />
 		</article>
 	)
 }

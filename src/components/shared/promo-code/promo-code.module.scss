@@ -1,0 +1,41 @@
+@use '@/styles/_variables.scss' as *;
+
+.promocode {
+	width: 274px;
+	height: 75px;
+	background: $white;
+	border-radius: 500px;
+	display: flex;
+}
+
+.left {
+	background: $primary;
+	color: $secondary;
+	border-radius: 100px;
+	padding: 8px 22px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.right {
+	color: $black;
+	padding: 8px 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.text {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 133%;
+}
+
+.value {
+	font-size: 32px;
+	line-height: 133%;
+	font-weight: 500;
+}

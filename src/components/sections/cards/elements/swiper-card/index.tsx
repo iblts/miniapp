@@ -2,8 +2,8 @@ import type { cardsDataInterface } from '@/data/cardsData'
 import type { CardViewType } from '@/utils/types'
 import cn from 'clsx'
 import React from 'react'
-import { CardContainer } from '../CardContainer/CardContainer'
-import styles from './Card.module.scss'
+import { CardContainer } from '../card-container'
+import styles from './swiper-card.module.scss'
 
 export interface CardInterface {
 	cardData: cardsDataInterface
@@ -11,7 +11,11 @@ export interface CardInterface {
 	className?: string
 }
 
-const Card: React.FC<CardInterface> = ({ cardData, variant, className }) => {
+const SwiperCard: React.FC<CardInterface> = ({
+	cardData,
+	variant,
+	className,
+}) => {
 	// вишлист карточка
 	const wishListInfo = (
 		<>
@@ -75,4 +79,4 @@ const Card: React.FC<CardInterface> = ({ cardData, variant, className }) => {
 	)
 }
 
-export { Card }
+export { SwiperCard as Card }

@@ -1,13 +1,19 @@
 export const Hint = ({
-	width = 36,
-	height = 36,
+	className,
+	size = 36,
 	primary = '#ACEF81',
 	secondary = '#0D41D2',
+}: {
+	className?: string
+	size?: number
+	primary?: string
+	secondary?: string
 }) => {
 	return (
 		<svg
-			width={width}
-			height={height}
+			className={className}
+			width={size}
+			height={size}
 			viewBox='0 0 36 36'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'

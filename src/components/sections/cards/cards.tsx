@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import cn from 'clsx'
-import styles from './CardsContent.module.scss'
+import styles from './cards.module.scss'
 
 import { useWindowSize } from '@/hooks/useWindowSize'
 import { useCardStore } from '@/store/useCardStore'
@@ -17,13 +17,13 @@ import type {
 import { cardsData } from '../../../data/cardsData'
 import { Card } from './elements'
 
-export interface CardsContentInterface {
+export interface CardsInterface {
 	isAnimationStarted: boolean
 	isFinalSection: boolean
 	showNextSection: () => void
 }
 
-const CardsContent: React.FC<CardsContentInterface> = ({
+const Cards: React.FC<CardsInterface> = ({
 	isAnimationStarted,
 	showNextSection,
 	isFinalSection,
@@ -55,9 +55,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 
 	const currentSection = useCurrentSection(state => state.currentSection)
 	const isChangeSection = useCurrentSection(state => state.isChangeSection)
-
-	//# счетчик "стоплиста"
-	const selectCity = useSelectedCitiesStore(state => state.selectCity) // функция для увеличения счетчика "стоплиста"
+	const selectCity = useSelectedCitiesStore(state => state.selectCity)
 
 	//* ОЧИСТКА ТАЙМЕРА *//
 	//# Функция для очистки таймера
@@ -98,7 +96,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 	//# функция для переключения информации о карточке в рамках одной карточки
 	const handleShowCardInfo = (
 		targetView: CardViewType,
-		direction: SwipeDirectionType
+		direction: SwipeDirectionType,
 	) => {
 		clearTimeoutRef() // очистка таймера
 
@@ -152,7 +150,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 
 	//# Общий обработчик начала взаимодействия (мышь и тач)
 	const handleInteractionStart = (
-		event: React.MouseEvent | React.TouchEvent
+		event: React.MouseEvent | React.TouchEvent,
 	) => {
 		if (isSwipeProcessing) return
 
@@ -186,7 +184,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 
 	//# функция для обработки перетаскивания карточки (мышь и тач)
 	const handleInteractionMove = (
-		event: React.MouseEvent | React.TouchEvent
+		event: React.MouseEvent | React.TouchEvent,
 	) => {
 		if (!isDragging || !startX) return
 
@@ -197,7 +195,6 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 		// Ограничиваем движение карточки
 		const maxDrag = 60
 		const boundedDeltaX = Math.max(Math.min(deltaX, maxDrag), -maxDrag)
-		console.log('Перетаскивание карточки:', boundedDeltaX)
 
 		setDragPosition({
 			x: boundedDeltaX,
@@ -239,12 +236,12 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 			if (event.key === 'ArrowLeft') {
 				handleShowCardInfo(
 					cardView === 'default' ? 'stopList' : cardView,
-					'left'
+					'left',
 				)
 			} else if (event.key === 'ArrowRight') {
 				handleShowCardInfo(
 					cardView === 'default' ? 'wishList' : cardView,
-					'right'
+					'right',
 				)
 			}
 
@@ -322,7 +319,7 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 												dragPosition.y
 											}px) rotate(${dragPosition.x * 0.05}deg)`,
 											transition: 'none',
-									  }
+										}
 									: {}),
 								zIndex: 10 + cardsData.length - index,
 							}}
@@ -390,4 +387,4 @@ const CardsContent: React.FC<CardsContentInterface> = ({
 	)
 }
 
-export { CardsContent }
+export { Cards }

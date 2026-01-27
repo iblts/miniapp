@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import React from 'react'
-import styles from './SwipeButton.module.scss'
+import styles from './swipe-button.module.scss'
 
 import type { CardViewType, CardViewVariantType } from '@/utils/types.ts'
 interface SwipeButtonInterface {

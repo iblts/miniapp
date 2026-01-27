@@ -2,10 +2,9 @@
 @use '@/styles/fonts.scss' as *;
 
 body {
-	overflow: hidden;
-	font-family: 'Spoof', sans-serif;
+	font-family: $fontFamilySpoof;
 	background: $secondary;
-	color: $primary-text;
+	color: $white;
 }
 
 * {
@@ -17,4 +16,8 @@ body {
 ul,
 li {
 	list-style: none;
+}
+
+button {
+	font-family: $fontFamilySpoof;
 }

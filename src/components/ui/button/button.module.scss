@@ -18,7 +18,12 @@
 
 .primary {
 	background: $secondary;
-	color: $primary-text;
+	color: $white;
+}
+
+.secondary {
+	background: $white;
+	color: $secondary;
 }
 
 .circle {

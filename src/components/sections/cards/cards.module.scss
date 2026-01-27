@@ -42,11 +42,15 @@ div.cardWrapper {
 	&_last {
 		transform: translateY(31px) scaleX(0.79);
 		background-color: #3f73ff;
+		box-shadow: 0px 2px 8px 0px #03031a33;
+		backdrop-filter: blur(16px);
 	}
 
 	&_oneBeforeLast {
 		transform: translateY(15px) scaleX(0.89);
 		background-color: #5d91ff;
+		box-shadow: 0px 2px 8px 0px #03031a33;
+		backdrop-filter: blur(16px);
 	}
 }
 

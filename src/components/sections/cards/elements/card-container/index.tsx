@@ -1,7 +1,7 @@
 import type { CardViewType } from '@/utils/types'
 import cn from 'clsx'
 import React from 'react'
-import styles from './CardContainer.module.scss'
+import styles from './card-container.module.scss'
 
 interface CardContainerInterface {
 	type?: 'mainCard' | 'backgroundCard'
